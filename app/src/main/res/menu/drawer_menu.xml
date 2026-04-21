@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_main">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_networks"
+            android:icon="@drawable/ic_network"
+            android:title="@string/networks" />
+    </group>
+
+    <group android:id="@+id/group_tools">
+        <item
+            android:id="@+id/nav_split_tunnel"
+            android:icon="@drawable/ic_split_tunnel"
+            android:title="@string/split_tunnel" />
+        <item
+            android:id="@+id/nav_vpn_share"
+            android:icon="@drawable/ic_vpn_share"
+            android:title="@string/vpn_share" />
+        <item
+            android:id="@+id/nav_ip_hunter"
+            android:icon="@drawable/ic_ip_hunter"
+            android:title="@string/ip_hunter" />
+        <item
+            android:id="@+id/nav_import_tweak"
+            android:icon="@drawable/ic_tweak"
+            android:title="@string/import_tweak" />
+    </group>
+
+    <group android:id="@+id/group_settings">
+        <item
+            android:id="@+id/nav_dns_settings"
+            android:icon="@drawable/ic_dns"
+            android:title="@string/dns_settings" />
+        <item
+            android:id="@+id/nav_logs"
+            android:icon="@drawable/ic_logs"
+            android:title="@string/logs" />
+        <item
+            android:id="@+id/nav_stats"
+            android:icon="@drawable/ic_stats"
+            android:title="@string/stats" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/about" />
+    </group>
+
+    <group android:id="@+id/group_exit">
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit"
+            android:title="@string/exit" />
+    </group>
+
+</menu>
