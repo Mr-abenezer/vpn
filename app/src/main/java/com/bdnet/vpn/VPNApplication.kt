@@ -8,8 +8,6 @@ import android.os.Build
 import com.bdnet.vpn.data.local.AppDatabase
 import com.bdnet.vpn.util.Constants
 import com.google.android.gms.ads.MobileAds
-import com.google.firebase.FirebaseApp
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class VPNApplication : Application() {
 
@@ -21,20 +19,15 @@ class VPNApplication : Application() {
         super.onCreate()
         instance = this
 
-        try {
-            FirebaseApp.initializeApp(this)
-        } catch (_: Exception) {
-        }
-
-        try {
-            MobileAds.initialize(this)
-        } catch (_: Exception) {
+        if (!Constants.ADMOB_BANNER_UNIT_ID.contains("X")) {
+            try {
+                MobileAds.initialize(this)
+            } catch (_: Exception) {
+            }
         }
 
         // Create notification channels
         createNotificationChannels()
-
-        setupCrashReporting()
     }
 
     private fun createNotificationChannels() {
@@ -81,13 +74,6 @@ class VPNApplication : Application() {
         notificationManager.createNotificationChannels(
             listOf(statusChannel, updatesChannel, alertsChannel)
         )
-    }
-
-    private fun setupCrashReporting() {
-        try {
-            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
-        } catch (_: Exception) {
-        }
     }
 
     companion object {

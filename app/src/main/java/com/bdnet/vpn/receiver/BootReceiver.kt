@@ -5,8 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.preferencesDataStore
+import com.bdnet.vpn.dataStore
 import com.bdnet.vpn.service.TunnelVpnService
 import com.bdnet.vpn.util.Constants
 import kotlinx.coroutines.CoroutineScope
@@ -14,8 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-
-val Context.dataStore by preferencesDataStore(name = "vpn_prefs")
 
 class BootReceiver : BroadcastReceiver() {
 

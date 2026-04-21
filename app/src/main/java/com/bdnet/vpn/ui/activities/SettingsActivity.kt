@@ -4,17 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.preferencesDataStore
 import com.bdnet.vpn.R
+import com.bdnet.vpn.dataStore
 import com.bdnet.vpn.util.Constants
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.first
-import android.widget.TextView
 
 class SettingsActivity : AppCompatActivity() {
-
-    private val dataStore by preferencesDataStore(name = "vpn_prefs")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +29,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun loadSettings() {
         lifecycleScope.launch {
             val prefs = dataStore.data.first()
-            val autoConnect = prefs[androidx.datastore.preferences.core.booleanPreferencesKey(Constants.PREF_AUTO_CONNECT)] ?: false
-            val killSwitch = prefs[androidx.datastore.preferences.core.booleanPreferencesKey(Constants.PREF_KILL_SWITCH)] ?: false
-            val splitTunnel = prefs[androidx.datastore.preferences.core.booleanPreferencesKey(Constants.PREF_SPLIT_TUNNEL_ENABLED)] ?: false
+            val autoConnect = prefs[booleanPreferencesKey(Constants.PREF_AUTO_CONNECT)] ?: false
+            val killSwitch = prefs[booleanPreferencesKey(Constants.PREF_KILL_SWITCH)] ?: false
+            val splitTunnel = prefs[booleanPreferencesKey(Constants.PREF_SPLIT_TUNNEL_ENABLED)] ?: false
 
             findViewById<SwitchCompat>(R.id.switch_auto_connect)?.isChecked = autoConnect
             findViewById<SwitchCompat>(R.id.switch_kill_switch)?.isChecked = killSwitch
@@ -62,7 +60,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun saveSetting(key: String, value: Boolean) {
         lifecycleScope.launch {
             dataStore.edit { prefs ->
-                prefs[androidx.datastore.preferences.core.booleanPreferencesKey(key)] = value
+                prefs[booleanPreferencesKey(key)] = value
             }
         }
     }

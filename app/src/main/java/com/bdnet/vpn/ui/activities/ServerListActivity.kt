@@ -47,8 +47,7 @@ class ServerListActivity : AppCompatActivity(), ServerAdapter.OnServerClickListe
         supportActionBar?.title = getString(R.string.servers)
 
         findViewById<View>(R.id.toolbar).findViewById<View>(R.id.toolbar_title)?.let {
-            it as TextView
-            it.text = getString(R.string.servers)
+            (it as? TextView)?.text = getString(R.string.servers)
         }
 
         swipeRefresh.setOnRefreshListener {
